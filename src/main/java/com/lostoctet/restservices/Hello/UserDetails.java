@@ -2,42 +2,51 @@ package com.lostoctet.restservices.Hello;
 
 public class UserDetails {
 
-	private String firstname;
+	private String firstName;
 	private String lastName;
 	private String City;
 	
-	//To String
+	
+	// To String
+
 	@Override
 	public String toString() {
-		return "UserDetails [firstname=" + firstname + ", lastName=" + lastName + ", City=" + City + "]";
+		//return "UserDetails [FirstName=" + firstname + ", LastName=" + lastName + ", City=" + City + "]";
+		return firstName + lastName + City ;
 	}
+	
 
 	//Constructor
-	public UserDetails(String firstname, String lastName, String city) {
-		this.firstname = firstname;
-		this.lastName = lastName;
-		City = city;
+	public UserDetails(String firstname1, String lastName1, String city1) {
+		this.firstName = firstname1;
+		this.lastName = lastName1;
+		City = city1;
 	}
 	
 	//Getters & Setters
+	
 	public String getFirstname() {
-		return firstname;
+		return firstName;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+
+	public void setFirstname(String firstname2) {
+		this.firstName = firstname2;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setLastName(String lastName2) {
+		this.lastName = lastName2;
 	}
+
 	public String getCity() {
 		return City;
 	}
-	public void setCity(String city) {
-		City = city;
+
+	public void setCity(String city2) {
+		City = city2;
 	}
-	
 	
 }
