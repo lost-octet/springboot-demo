@@ -1,12 +1,9 @@
 package com.lostoctet.restservices.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 
 //Entity Declaration. Entity is one row of the database.
@@ -38,7 +35,18 @@ public class User {
 	@Column(name = "SSN", length=50, nullable=false, unique=true)
 	private String ssn;
 
-	
+	@OneToMany(mappedBy = "user")
+	private List<Order> orders;
+
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	//No argument Constructor- Mandatory in JPA
 	public User() {
 	}
