@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 
 //Entity Declaration. Entity is one row of the database.
 @Entity
@@ -14,10 +17,12 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
+	@NotEmpty(message = "Username Cant be Empty")
 	@Column(name = "USER_NAME", length=50, nullable=false, unique=true)
 	private String username;
-	
+
+	@Size(min = 2, message ="Minimum Firstname Length is 2")
 	@Column(name = "FIRST_NAME", length=50, nullable=false)
 	private String firstname;
 	
@@ -34,7 +39,7 @@ public class User {
 	private String ssn;
 
 	
-	//No agrument Constructor- Mandatory in JPA
+	//No argument Constructor- Mandatory in JPA
 	public User() {
 	}
 	
