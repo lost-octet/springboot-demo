@@ -30,7 +30,6 @@ public class OrderController {
             throw new UserNotFoundException("User Not Found");
 
         return userOptional.get().getOrders();
-
     }
 
     //Method for Creating Order

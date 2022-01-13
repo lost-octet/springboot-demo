@@ -44,7 +44,7 @@ public class UserController {
 			userService.createUser(user);
 			HttpHeaders headers = new HttpHeaders();
 			//UriComponentsBuilder builder;
-			headers.setLocation(builder.path("/users/{id}").buildAndExpand(user.getId()).toUri());
+			headers.setLocation(builder.path("/users/{id}").buildAndExpand(user.getUserid()).toUri());
 			return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 		} catch (UserExistsException ex) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -59,7 +59,6 @@ public class UserController {
 		} catch (UserNotFoundException ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage());
 		}
-		
 	}
 	
 	//Update user By ID
