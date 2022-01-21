@@ -63,8 +63,7 @@ public class UserHateoasController {
     public EntityModel<User> getUserByID(@PathVariable("id") @Min(1) Long id) {
         try {
 
-            Optional<User> optionalUser = userService.getUserByID(id);
-            User user = optionalUser.get();
+            User user = userService.getUserByID(id);
             Long userid = user.getUserid();
             EntityModel<User> userEntityModel = EntityModel.of(user);
             Link selfLink = linkTo(UserHateoasController.class).slash(id).withSelfRel();

@@ -38,13 +38,13 @@ public class UserService {
 	}
 	
 	//Get User By ID
-	public Optional<User> getUserByID(Long id) throws  UserNotFoundException {
+	public User getUserByID(Long id) throws  UserNotFoundException {
 		Optional<User> user=userRepository.findById(id);
 		
 		if(!user.isPresent())
 			throw new UserNotFoundException("User Not Found in Repository");
 			
-		return user;
+		return user.get();
 	}
 	
 	//Update user by ID
