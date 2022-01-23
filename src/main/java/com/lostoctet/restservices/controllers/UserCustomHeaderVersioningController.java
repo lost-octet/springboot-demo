@@ -24,15 +24,17 @@ public class UserCustomHeaderVersioningController {
     @Autowired
     private ModelMapper modelMapper;
 
-    //Get User by ID- Custom Header Based Version-1
-    @GetMapping(value ="/{id}", headers = "API-Version=1")
-    public UserDtoV1 getUserByIdV1(@PathVariable("id") @Min(1) Long id) throws UserNotFoundException {
-        User user = userService.getUserByID(id);
-        if(user == null) throw new UserNotFoundException("User Not Found Call versioning URI based v1.0");
-
-        UserDtoV1 userDto = modelMapper.map(user, UserDtoV1.class);
-        return userDto;
-    }
+    // Get User by ID- Custom Header Based Version-1
+    // This Methods has been commented as Springdoc OpenAPI does not support
+    // multiple "headers" for API documentation. Although it supports the multiple "params"
+//    @GetMapping(value ="/{id}", headers = "API-Version=1")
+//    public UserDtoV1 getUserByIdV1(@PathVariable("id") @Min(1) Long id) throws UserNotFoundException {
+//        User user = userService.getUserByID(id);
+//        if(user == null) throw new UserNotFoundException("User Not Found Call versioning URI based v1.0");
+//
+//        UserDtoV1 userDto = modelMapper.map(user, UserDtoV1.class);
+//        return userDto;
+//    }
 
     //Get User by ID- Custom Header Based Version-2
     @GetMapping(value ="/{id}", headers = "API-Version=2")

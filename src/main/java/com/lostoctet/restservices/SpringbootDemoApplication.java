@@ -1,7 +1,13 @@
 package com.lostoctet.restservices;
 
-//import jdk.nashorn.internal.ir.LexicalContextNode;
-//import org.hibernate.validator.spi.messageinterpolation.LocaleResolverContext;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +17,24 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 import java.util.Locale;
 
-//
 @SpringBootApplication
+@OpenAPIDefinition(
+		info = @Info(
+				title = "SpringBoot Demo API",
+				version = "v1.0",
+				description = "" + "Demo Application for Learning SpringBoot v2.6.1",
+				contact = @Contact(name = "LostOctet", url = "https://springboot.io", email = "springboot-demo@gmail.com"),
+				license = @License(name = "Open Licence", url = "https://github.com/lost-octet/springboot-demo.git")),
+		servers = @Server(url = "http://localhost:8080")
+)
+
+//This Annotation is used for adding an authentication to the API Documentation
+//@SecurityScheme(
+//		name = "api",
+//		scheme = "basic",
+//		type = SecuritySchemeType.HTTP,
+//		in = SecuritySchemeIn.HEADER)
+
 public class SpringbootDemoApplication {
 
 	public static void main(String[] args) {

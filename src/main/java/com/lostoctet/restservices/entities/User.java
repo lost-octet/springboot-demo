@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -16,6 +17,7 @@ import org.springframework.hateoas.RepresentationModel;
 @Entity
 @Table(name ="user")
 @Data
+@Schema(description = "User Entity Schema")
 //@JsonIgnoreProperties({"firstname", "lastname"})		//Static Json Filtering
 //@JsonFilter(value = "userFilter")						//Used for MappingJacksonValue Filtering
 public class User extends RepresentationModel<User> {
@@ -23,16 +25,19 @@ public class User extends RepresentationModel<User> {
 	@Id
 	@GeneratedValue
 	@JsonView(Views.External.class)
+	@Schema(description = "Auto-Generated ID", name = "userid", required = true, example = "1")
 	private Long userid;
 
 	@NotEmpty(message = "Username Cant be Empty")
 	@Column(name = "USER_NAME", length=50, nullable=false, unique=true)
 	@JsonView(Views.External.class)
+	@Schema(description = "Unique Username", name = "username", required = true)
 	private String username;
 
-	@Size(min = 2, message ="Minimum Firstname Length is 2")
+	@Size(min = 2, max = 50, message ="Minimum Firstname Length is 2")
 	@Column(name = "FIRST_NAME", length=50, nullable=false)
 	@JsonView(Views.External.class)
+	@Schema(description = "User First Name", name = "firstname", required = true, minLength = 2, maxLength = 50, example = "Tom")
 	private String firstname;
 	
 	@Column(name = "LAST_NAME", length=50, nullable=false)
