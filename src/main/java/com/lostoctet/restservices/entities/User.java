@@ -15,7 +15,7 @@ import org.springframework.hateoas.RepresentationModel;
 
 //Entity Declaration. Entity is one row of the database.
 @Entity
-@Table(name ="user")
+@Table(name ="users")
 @Data
 @Schema(description = "User Entity Schema")
 //@JsonIgnoreProperties({"firstname", "lastname"})		//Static Json Filtering
